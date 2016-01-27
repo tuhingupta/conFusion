@@ -72,5 +72,49 @@ angular.module('confusionApp', [])
                 $scope.showDetails = !$scope.showDetails;
             };
 
-        }]);
+        }])
+       
+
+       .controller('ContactController', ['$scope', function($scope) {
+            $scope.channelmsg = "Select a Channel";
+            $scope.invalidChannelSelection = false;
+            
+            $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
+                        var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
+                        $scope.channels = channels;
+
+            }])
+        
+
+        .controller('FeedbackController', ['$scope', function($scope) {
+
+            $scope.sendFeedback = function() {
+                  console.log($scope.feedback);
+                  console.log($scope.feedback.mychannel);
+                  
+                  if($scope.feedback.mychannel === "tel" && $scope.feedback.tel.number == ""){
+                    $scope.invalidChannelSelection = true;
+                    $scope.channelmsg = "enter tel no";
+                  }else{
+                  
+                        if ($scope.feedback.agree && ($scope.feedback.mychannel == "")&& !$scope.feedback.mychannel) {
+                                      $scope.invalidChannelSelection = true;
+                          console.log('incorrect');
+                        }
+                        else {
+                        
+                          $scope.invalidChannelSelection = false;
+                          $scope.feedback = {mychannel:"", firstName:"", lastName:"",
+                                             agree:false, email:"" };
+                          $scope.feedback.mychannel="";
+
+                          $scope.feedbackForm.$setPristine();
+                          console.log($scope.feedback);
+                        }
+                  }
+            };
+        }]) 
+
+       
+       ;
 
