@@ -25,10 +25,10 @@
 
 <body>
 
-    <div class="container">
-        <div class="row row-content" ng-controller="dishDetailController as dishCtrl">
+    <div class="container" ng-controller="DishDetailController">
+        <div class="row row-content">
             <div class="col-xs-12">
-                <div class="media" ng-init="dish = dishCtrl.dish">
+                <div class="media">
                         <div class="media-left media-middle">
                             <a href="#">
                             <img class="media-object img-thumbnail"
@@ -49,72 +49,74 @@
                 <p style="display:inline;padding-left:15px;color:gray;">Sort by: 
                     <input style="border:solid 2px Gainsboro;" type="text" ng-model="predicate">
                 </p>
-                <blockquote ng-repeat="comment in dishCtrl.dish.comments | orderBy:predicate">
+                <blockquote ng-repeat="comment in dish.comments | orderBy:predicate">
                     <p>{{comment.rating}} Stars</p>
                     <p>{{comment.comment}}</p>
                     <footer>{{comment.author}} , {{comment.date | date:'MMM. dd, yyyy'}}</footer>
                 </blockquote>
               
+                <blockquote ng-show="(!commentsForm.author.$pristine || !commentsForm.comment.$pristine) && !commentsForm.$invalid">
+                    <p>{{inputComment.rating}} Stars</p>
+                    <p>{{inputComment.comment}}</p>
+                    <footer>{{inputComment.author}} , {{inputComment.date | date:'MMM. dd, yyyy'}}</footer>
+                </blockquote>
+              
             </div>
+          <!--form-->
+          <div class="col-xs-12 col-sm-9">
+          <form class="form-horizontal" name="commentsForm" ng-submit="submitComment()" novalidate>
+             
+              <div class="form-group" ng-class="{ 'has-error' : commentsForm.author.$error.required && !commentsForm.author.$pristine }">
+                    <label for="author" class="col-sm-2 control-label">Your Name</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Enter Your Name"
+                    ng-model="inputComment.author" required>
+                    <span ng-show="commentsForm.author.$error.required && !commentsForm.author.$pristine" class="help-block">Your name is required.</span>
+                    </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Number of Stars</label>
+                  <div class="col-sm-10">
+                        <label class="radio-inline">
+                          <input type="radio" ng-model="inputComment.rating" id="inlineRadio1" value=1> 1
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" ng-model="inputComment.rating" id="inlineRadio2" value=2> 2
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" ng-model="inputComment.rating" id="inlineRadio3" value=3> 3
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" ng-model="inputComment.rating" id="inlineRadio3" value=4> 4
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" ng-model="inputComment.rating" id="inlineRadio3" value=5 checked> 5
+                        </label>
+                  </div>
+              </div>
+              <div class="form-group" ng-class="{ 'has-error' : commentsForm.comment.$error.required && !commentsForm.comment.$pristine }">
+                        <label for="comment" class="col-sm-2 control-label">Your Comments</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="comment" name="comment" rows="12" ng-model="inputComment.comment" required></textarea>
+                            <span ng-show="commentsForm.comment.$error.required && !commentsForm.comment.$pristine" class="help-block">Your Comment is required.</span>
+                        </div>
+               </div> 
+               <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                             <button type="submit" class="btn btn-primary" ng-disabled="commentsForm.$invalid">Submit Comment</button>
+                        </div>
+               </div>
+        </form> 
+        </div>  
         </div>
-
     </div>
 
+
+<!-- build:js scripts/main.js -->
     <script src="../bower_components/angular/angular.min.js"></script>
-    <script>
+    <script src="scripts/app.js"></script>
+<!-- endbuild -->
 
-        var app = angular.module('confusionApp',[]);
-        
-        app.controller('dishDetailController', function() {
-
-            var dish={
-                          name:'Uthapizza',
-                          image: 'images/uthapizza.png',
-                          category: 'mains', 
-                          label:'Hot',
-                          price:'4.99',
-                          description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
-                           comments: [
-                               {
-                                   rating:5,
-                                   comment:"Imagine all the eatables, living in conFusion!",
-                                   author:"John Lemon",
-                                   date:"2012-10-16T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:4,
-                                   comment:"Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-                                   author:"Paul McVites",
-                                   date:"2014-09-05T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:3,
-                                   comment:"Eat it, just eat it!",
-                                   author:"Michael Jaikishan",
-                                   date:"2015-02-13T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:4,
-                                   comment:"Ultimate, Reaching for the stars!",
-                                   author:"Ringo Starry",
-                                   date:"2013-12-02T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:2,
-                                   comment:"It's your birthday, we're gonna party!",
-                                   author:"25 Cent",
-                                   date:"2011-12-02T17:57:28.556094Z"
-                               }
-                               
-                           ]
-                    };
-            
-            this.dish = dish;
-            this.predicate = '';
-            
-        });
-
-    </script>
 
 </body>
 
