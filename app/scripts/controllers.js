@@ -82,6 +82,9 @@ angular.module('confusionApp')
             
             $scope.dish = menuFactory.getDish(3);;
             $scope.predicate = '';
+          }])
+
+        .controller('DishDetailCommentController', ['$scope','menuFactory', function($scope,menuFactory) {
 
             $scope.inputComment = { author:"", date:"", rating:5, comment:"" };
 
@@ -99,9 +102,7 @@ angular.module('confusionApp')
 
             };
                        
-            
         }]) 
 
-       
        ;
 
