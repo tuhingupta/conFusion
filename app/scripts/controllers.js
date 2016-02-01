@@ -54,12 +54,12 @@ angular.module('confusionApp')
                   console.log($scope.feedback);
                   console.log($scope.feedback.mychannel);
                   
-                  if($scope.feedback.mychannel === "tel" && $scope.feedback.tel.number == ""){
+                  if($scope.feedback.mychannel === "tel" && $scope.feedback.tel.number === ""){
                     $scope.invalidChannelSelection = true;
                     $scope.channelmsg = "enter tel no";
                   }else{
                   
-                        if ($scope.feedback.agree && ($scope.feedback.mychannel == "")&& !$scope.feedback.mychannel) {
+                        if ($scope.feedback.agree && ($scope.feedback.mychannel === "")&& !$scope.feedback.mychannel) {
                                       $scope.invalidChannelSelection = true;
                           console.log('incorrect');
                         }
@@ -77,14 +77,14 @@ angular.module('confusionApp')
             };
         }])
 
-        .controller('DishDetailController',['$scope', '$routeParams','menuFactory', function($scope,$routeParams,menuFactory) {
+        .controller('DishDetailController',['$scope', '$stateParams','menuFactory', function($scope,$stateParams,menuFactory) {
 
-            var dish = menuFactory.getDish(parseInt($routeParams.id,10));
+            var dish = menuFactory.getDish(parseInt($stateParams.id,10));
             $scope.dish = dish;
             $scope.predicate = '';
           }])
 
-        .controller('DishDetailCommentController', ['$scope','menuFactory', function($scope,menuFactory) {
+        .controller('DishDetailCommentController', ['$scope', function($scope) {
 
             $scope.inputComment = { author:"", date:"", rating:5, comment:"" };
 
