@@ -35,7 +35,7 @@
             </div>
           <!--form-->
 
-          <div class="col-xs-12 col-sm-9" ng-controller="DishDetailCommentController">
+          <div class="col-xs-12 col-sm-9" ng-controller="DishCommentController">
             <form class="form-horizontal" name="commentsForm" ng-submit="submitComment()" novalidate>
             <div class="col-xs-10 col-xs-offset-1" >
             <blockquote ng-show="(!commentsForm.author.$pristine || !commentsForm.comment.$pristine) && !commentsForm.$invalid">
