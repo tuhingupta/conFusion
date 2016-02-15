@@ -209,5 +209,19 @@
       "description": "Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!"
     }
   ],
-  "feedback": []
+  "feedback": [
+    {
+      "mychannel": "Email",
+      "firstName": "Tuhin",
+      "lastName": "Gupta",
+      "agree": true,
+      "email": "tuhin.gupta@gmail.com",
+      "tel": {
+        "areaCode": "123",
+        "number": "456 7890"
+      },
+      "comments": "good. great..",
+      "id": 1
+    }
+  ]
 }
