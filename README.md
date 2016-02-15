@@ -2,7 +2,7 @@
 
 Sample Resturant application built using 
 * JavaScript
-* Angular.js
+* Angular.js - scope, filters, directives, routes, controllers, services, factory, config
 * Express.js
 * Jasmine framework
 * karma cli
