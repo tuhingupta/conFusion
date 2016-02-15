@@ -26,9 +26,16 @@ gulp.task('clean', function() {
     return del(['dist']);
 });
 
+//copy dist to json-server/public
+gulp.task('public',['usemin'],function(){
+  return del(['json-server/public']), gulp.src('dist/**/*')
+    .pipe(gulp.dest('json-server/public/'))
+    .pipe(notify({ message: 'public folder updated.' }));
+});
+
 // Default task
 gulp.task('default', ['clean'], function() {
-    gulp.start('usemin','imagemin','copyfonts');
+    gulp.start('usemin','imagemin','copyfonts','public');
 });
 
 
