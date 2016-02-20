@@ -19,16 +19,12 @@ Sample application built using
 
 ##How to run the application
 
-###Run app.js
 
-```
-*go to conFusion folder*
+##Run json-server to serve application and json data
 
-$ node app.js
+json-server is a simple server to server application static js, html, css files. 
+It is also used to server json data for read/write.
 
-```
-
-##Run json-server to serve and store json data
 ```
 *go to json-server folder*
 
