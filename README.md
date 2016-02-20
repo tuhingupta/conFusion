@@ -47,5 +47,5 @@ $ karma start karma.conf.js
 ```
 *go to test folder*
 
-protractor protractor.conf.js
+$ protractor protractor.conf.js
 ```
