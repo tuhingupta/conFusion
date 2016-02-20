@@ -20,18 +20,32 @@ Sample application built using
 ##How to run the application
 
 ###Run app.js
+
+```
 *go to conFusion folder*
-`$ node app.js`
+
+$ node app.js
+
+```
 
 ##Run json-server to serve and store json data
+```
 *go to json-server folder*
-`$ json-server --watch db.json`
+
+$ json-server --watch db.json
+
+```
 
 ##Run Karma tests
+```
 *go to test folder*
-`$ karma start karma.conf.js`
+
+$ karma start karma.conf.js
+```
 
 ##Run Protractor tests
+```
 *go to test folder*
-`protractor protractor.conf.js`
 
+protractor protractor.conf.js
+```
